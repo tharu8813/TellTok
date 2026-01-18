@@ -58,3 +58,13 @@ C# WinForms 기반 메신저 애플리케이션입니다.
 
 - 본 프로젝트는 **학습 및 포트폴리오 목적**으로 공개되었습니다.
 - 대회 과제 특성상 일부 구조는 일반적인 실무 패턴과 다를 수 있습니다.
+
+
+## License
+
+This project is licensed under the  
+**Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
+
+Commercial use is not permitted.  
+See the [LICENSE](./LICENSE) file for details.
+
