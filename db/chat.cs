@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace telltok
+namespace telltok.db
 {
     using System;
     using System.Collections.Generic;

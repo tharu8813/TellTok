@@ -7,26 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace telltok
+namespace telltok.db
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class add_friend
+    public partial class emoticon
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public add_friend()
+        public emoticon()
         {
-            this.alim = new HashSet<alim>();
+            this.chat = new HashSet<chat>();
         }
     
-        public int af_no { get; set; }
-        public int af_go { get; set; }
-        public int af_take { get; set; }
+        public int e_no { get; set; }
+        public byte[] e_image { get; set; }
+        public Nullable<int> eg_no { get; set; }
     
-        public virtual user user { get; set; }
-        public virtual user user1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<alim> alim { get; set; }
+        public virtual ICollection<chat> chat { get; set; }
+        public virtual emoticon_group emoticon_group { get; set; }
     }
 }

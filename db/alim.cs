@@ -7,23 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace telltok
+namespace telltok.db
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class chat_group
+    public partial class alim
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public chat_group()
-        {
-            this.chat = new HashSet<chat>();
-        }
+        public int a_no { get; set; }
+        public System.DateTime a_date { get; set; }
+        public Nullable<int> af_no { get; set; }
     
-        public int cg_no { get; set; }
-        public int cg_tamp { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<chat> chat { get; set; }
+        public virtual add_friend add_friend { get; set; }
     }
 }

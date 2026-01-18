@@ -63,44 +63,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="add_friend.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="db\add_friend.cs">
+      <DependentUpon>data.tt</DependentUpon>
     </Compile>
-    <Compile Include="ads.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="db\ads.cs">
+      <DependentUpon>data.tt</DependentUpon>
     </Compile>
-    <Compile Include="alim.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="db\alim.cs">
+      <DependentUpon>data.tt</DependentUpon>
     </Compile>
-    <Compile Include="chat.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="db\chat.cs">
+      <DependentUpon>data.tt</DependentUpon>
     </Compile>
-    <Compile Include="chat_group.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="db\chat_group.cs">
+      <DependentUpon>data.tt</DependentUpon>
     </Compile>
-    <Compile Include="emoticon.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="emoticon_group.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="file.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Context.cs">
+    <Compile Include="db\data.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>data.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.cs">
+    <Compile Include="db\data.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>data.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model1.Designer.cs">
+    <Compile Include="db\data.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>data.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="db\emoticon.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db\emoticon_group.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db\file.cs">
+      <DependentUpon>data.tt</DependentUpon>
+    </Compile>
+    <Compile Include="db\user.cs">
+      <DependentUpon>data.tt</DependentUpon>
     </Compile>
     <Compile Include="play\AddFriend.cs">
       <SubType>Form</SubType>
@@ -285,9 +288,6 @@
     <Compile Include="Tools\UserControls\contour.Designer.cs">
       <DependentUpon>contour.cs</DependentUpon>
     </Compile>
-    <Compile Include="user.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="play\AddFriend.resx">
       <DependentUpon>AddFriend.cs</DependentUpon>
     </EmbeddedResource>
@@ -385,12 +385,12 @@
     <EmbeddedResource Include="Tools\UserControls\ProfilePicture.resx">
       <DependentUpon>ProfilePicture.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Model1.edmx">
+    <EntityDeploy Include="db\data.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>data.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="db\data.edmx.diagram">
+      <DependentUpon>data.edmx</DependentUpon>
     </None>
     <None Include="NoonnuBasicGothicRegular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -433,33 +433,26 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="db\data.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>data.edmx</DependentUpon>
+      <LastGenOutput>data.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="db\data.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>data.edmx</DependentUpon>
+      <LastGenOutput>data.cs</LastGenOutput>
+    </Content>
     <Content Include="icon_text_.ico" />
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\chat-emoticon.png" />
     <None Include="Resources\chat-button.png" />
     <None Include="Resources\and-emoticon.png" />
     <None Include="Resources\login-loding.gif" />
-    <None Include="Resources\chat-emoticon-button.png" />
-    <None Include="Resources\chat-emoticon-button_enter.png" />
-    <None Include="Resources\add-buyList.png" />
-    <None Include="Resources\Locker.png" />
-    <None Include="Resources\19.png" />
     <None Include="Resources\saech.png" />
-    <None Include="Resources\pay.png" />
     <None Include="Resources\and-stop_2.png" />
     <None Include="Resources\and-logout_3.png" />
     <None Include="Resources\and-logout_2.png" />
     <None Include="Resources\and-stop_3.png" />
-    <None Include="Resources\gift.png" />
     <None Include="Resources\logout.png" />
     <None Include="Resources\stop.png" />
     <None Include="Resources\Profile-myInfo.png" />
@@ -485,7 +478,6 @@
     <None Include="Resources\main-friend_3.png" />
     <None Include="Resources\main-friend_2.png" />
     <None Include="Resources\main-friend_1.png" />
-    <None Include="Resources\ezgif-3-45512efad7.gif" />
     <None Include="Resources\기본_프사.jpg" />
     <None Include="Resources\black_icon.ico" />
     <None Include="Resources\%28black%29icon.ico" />
