@@ -405,6 +405,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="전국기능경기대회 강원도 1과제.hwp" />
+    <None Include="전국기능경기대회 강원도 1과제.pdf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -444,6 +446,7 @@
       <LastGenOutput>data.cs</LastGenOutput>
     </Content>
     <Content Include="icon_text_.ico" />
+    <Content Include="setting.sql" />
     <None Include="Resources\chat-emoticon.png" />
     <None Include="Resources\chat-button.png" />
     <None Include="Resources\and-emoticon.png" />
