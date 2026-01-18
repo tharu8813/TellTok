@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="telltokModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="add_friend">
+          <Key>
+            <PropertyRef Name="af_no" />
+          </Key>
+          <Property Name="af_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="af_go" Type="int" Nullable="false" />
+          <Property Name="af_take" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ads">
+          <Key>
+            <PropertyRef Name="ad_no" />
+          </Key>
+          <Property Name="ad_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad_image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="alim">
+          <Key>
+            <PropertyRef Name="a_no" />
+          </Key>
+          <Property Name="a_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_date" Type="datetime" Nullable="false" />
+          <Property Name="af_no" Type="int" />
+        </EntityType>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="c_no" />
+          </Key>
+          <Property Name="c_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_date" Type="datetime" Nullable="false" />
+          <Property Name="c_go" Type="int" Nullable="false" />
+          <Property Name="c_take" Type="int" Nullable="false" />
+          <Property Name="c_message" Type="nvarchar" MaxLength="300" />
+          <Property Name="e_no" Type="int" />
+          <Property Name="f_no" Type="int" />
+          <Property Name="c_delete" Type="bit" Nullable="false" />
+          <Property Name="cg_no" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chat_group">
+          <Key>
+            <PropertyRef Name="cg_no" />
+          </Key>
+          <Property Name="cg_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cg_tamp" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="emoticon">
+          <Key>
+            <PropertyRef Name="e_no" />
+          </Key>
+          <Property Name="e_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="e_image" Type="varbinary(max)" />
+          <Property Name="eg_no" Type="int" />
+        </EntityType>
+        <EntityType Name="emoticon_group">
+          <Key>
+            <PropertyRef Name="eg_no" />
+          </Key>
+          <Property Name="eg_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eg_name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="f_no" />
+          </Key>
+          <Property Name="f_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="u_no" />
+          </Key>
+          <Property Name="u_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_pw" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="u_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="u_status_text" Type="nvarchar" MaxLength="255" />
+          <Property Name="u_like_count" Type="int" Nullable="false" />
+          <Property Name="u_friend_id" Type="int" />
+          <Property Name="u_birthdate" Type="date" Nullable="false" />
+          <Property Name="u_gender" Type="tinyint" Nullable="false" />
+          <Property Name="u_friend_fix" Type="varchar" MaxLength="255" />
+          <Property Name="u_friend" Type="varchar" MaxLength="255" />
+          <Property Name="u_tellpay" Type="int" />
+          <Property Name="u_emoticon" Type="varchar" MaxLength="255" />
+          <Property Name="u_profile_image" Type="varbinary(max)" />
+          <Property Name="u_background_image" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__add_frien__af_go__47DBAE45">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="add_friend" Type="Self.add_friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="add_friend">
+              <PropertyRef Name="af_go" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__add_frien__af_ta__48CFD27E">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="add_friend" Type="Self.add_friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="add_friend">
+              <PropertyRef Name="af_take" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__alim__af_no__49C3F6B7">
+          <End Role="add_friend" Type="Self.add_friend" Multiplicity="0..1" />
+          <End Role="alim" Type="Self.alim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="add_friend">
+              <PropertyRef Name="af_no" />
+            </Principal>
+            <Dependent Role="alim">
+              <PropertyRef Name="af_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__c_go__4AB81AF0">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="c_go" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__c_take__4BAC3F29">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="c_take" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__cg_no__4CA06362">
+          <End Role="chat_group" Type="Self.chat_group" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chat_group">
+              <PropertyRef Name="cg_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="cg_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__e_no__4D94879B">
+          <End Role="emoticon" Type="Self.emoticon" Multiplicity="0..1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emoticon">
+              <PropertyRef Name="e_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="e_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__f_no__4E88ABD4">
+          <End Role="file" Type="Self.file" Multiplicity="0..1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="file">
+              <PropertyRef Name="f_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="f_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__emoticon__eg_no__4F7CD00D">
+          <End Role="emoticon_group" Type="Self.emoticon_group" Multiplicity="0..1" />
+          <End Role="emoticon" Type="Self.emoticon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emoticon_group">
+              <PropertyRef Name="eg_no" />
+            </Principal>
+            <Dependent Role="emoticon">
+              <PropertyRef Name="eg_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="telltokModelStoreContainer">
+          <EntitySet Name="add_friend" EntityType="Self.add_friend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ads" EntityType="Self.ads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="alim" EntityType="Self.alim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chat" EntityType="Self.chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chat_group" EntityType="Self.chat_group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emoticon" EntityType="Self.emoticon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="emoticon_group" EntityType="Self.emoticon_group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="file" EntityType="Self.file" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__add_frien__af_go__47DBAE45" Association="Self.FK__add_frien__af_go__47DBAE45">
+            <End Role="user" EntitySet="user" />
+            <End Role="add_friend" EntitySet="add_friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK__add_frien__af_ta__48CFD27E" Association="Self.FK__add_frien__af_ta__48CFD27E">
+            <End Role="user" EntitySet="user" />
+            <End Role="add_friend" EntitySet="add_friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK__alim__af_no__49C3F6B7" Association="Self.FK__alim__af_no__49C3F6B7">
+            <End Role="add_friend" EntitySet="add_friend" />
+            <End Role="alim" EntitySet="alim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__c_go__4AB81AF0" Association="Self.FK__chat__c_go__4AB81AF0">
+            <End Role="user" EntitySet="user" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__c_take__4BAC3F29" Association="Self.FK__chat__c_take__4BAC3F29">
+            <End Role="user" EntitySet="user" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__cg_no__4CA06362" Association="Self.FK__chat__cg_no__4CA06362">
+            <End Role="chat_group" EntitySet="chat_group" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__e_no__4D94879B" Association="Self.FK__chat__e_no__4D94879B">
+            <End Role="emoticon" EntitySet="emoticon" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__f_no__4E88ABD4" Association="Self.FK__chat__f_no__4E88ABD4">
+            <End Role="file" EntitySet="file" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__emoticon__eg_no__4F7CD00D" Association="Self.FK__emoticon__eg_no__4F7CD00D">
+            <End Role="emoticon_group" EntitySet="emoticon_group" />
+            <End Role="emoticon" EntitySet="emoticon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="telltokModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="add_friend">
+          <Key>
+            <PropertyRef Name="af_no" />
+          </Key>
+          <Property Name="af_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="af_go" Type="Int32" Nullable="false" />
+          <Property Name="af_take" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK__add_frien__af_go__47DBAE45" FromRole="add_friend" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__add_frien__af_ta__48CFD27E" FromRole="add_friend" ToRole="user" />
+          <NavigationProperty Name="alim" Relationship="Self.FK__alim__af_no__49C3F6B7" FromRole="add_friend" ToRole="alim" />
+        </EntityType>
+        <EntityType Name="ads">
+          <Key>
+            <PropertyRef Name="ad_no" />
+          </Key>
+          <Property Name="ad_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="alim">
+          <Key>
+            <PropertyRef Name="a_no" />
+          </Key>
+          <Property Name="a_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="af_no" Type="Int32" />
+          <NavigationProperty Name="add_friend" Relationship="Self.FK__alim__af_no__49C3F6B7" FromRole="alim" ToRole="add_friend" />
+        </EntityType>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="c_no" />
+          </Key>
+          <Property Name="c_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="c_go" Type="Int32" Nullable="false" />
+          <Property Name="c_take" Type="Int32" Nullable="false" />
+          <Property Name="c_message" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="e_no" Type="Int32" />
+          <Property Name="f_no" Type="Int32" />
+          <Property Name="c_delete" Type="Boolean" Nullable="false" />
+          <Property Name="cg_no" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK__chat__c_go__4AB81AF0" FromRole="chat" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__chat__c_take__4BAC3F29" FromRole="chat" ToRole="user" />
+          <NavigationProperty Name="chat_group" Relationship="Self.FK__chat__cg_no__4CA06362" FromRole="chat" ToRole="chat_group" />
+          <NavigationProperty Name="emoticon" Relationship="Self.FK__chat__e_no__4D94879B" FromRole="chat" ToRole="emoticon" />
+          <NavigationProperty Name="file" Relationship="Self.FK__chat__f_no__4E88ABD4" FromRole="chat" ToRole="file" />
+        </EntityType>
+        <EntityType Name="chat_group">
+          <Key>
+            <PropertyRef Name="cg_no" />
+          </Key>
+          <Property Name="cg_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cg_tamp" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="chat" Relationship="Self.FK__chat__cg_no__4CA06362" FromRole="chat_group" ToRole="chat" />
+        </EntityType>
+        <EntityType Name="emoticon">
+          <Key>
+            <PropertyRef Name="e_no" />
+          </Key>
+          <Property Name="e_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="e_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="eg_no" Type="Int32" />
+          <NavigationProperty Name="chat" Relationship="Self.FK__chat__e_no__4D94879B" FromRole="emoticon" ToRole="chat" />
+          <NavigationProperty Name="emoticon_group" Relationship="Self.FK__emoticon__eg_no__4F7CD00D" FromRole="emoticon" ToRole="emoticon_group" />
+        </EntityType>
+        <EntityType Name="emoticon_group">
+          <Key>
+            <PropertyRef Name="eg_no" />
+          </Key>
+          <Property Name="eg_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eg_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="emoticon" Relationship="Self.FK__emoticon__eg_no__4F7CD00D" FromRole="emoticon_group" ToRole="emoticon" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="f_no" />
+          </Key>
+          <Property Name="f_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="chat" Relationship="Self.FK__chat__f_no__4E88ABD4" FromRole="file" ToRole="chat" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="u_no" />
+          </Key>
+          <Property Name="u_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_pw" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="u_status_text" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="u_like_count" Type="Int32" Nullable="false" />
+          <Property Name="u_friend_id" Type="Int32" />
+          <Property Name="u_birthdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="u_gender" Type="Byte" Nullable="false" />
+          <Property Name="u_friend_fix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="u_friend" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="u_tellpay" Type="Int32" />
+          <Property Name="u_emoticon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="u_profile_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="u_background_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="add_friend" Relationship="Self.FK__add_frien__af_go__47DBAE45" FromRole="user" ToRole="add_friend" />
+          <NavigationProperty Name="add_friend1" Relationship="Self.FK__add_frien__af_ta__48CFD27E" FromRole="user" ToRole="add_friend" />
+          <NavigationProperty Name="chat" Relationship="Self.FK__chat__c_go__4AB81AF0" FromRole="user" ToRole="chat" />
+          <NavigationProperty Name="chat1" Relationship="Self.FK__chat__c_take__4BAC3F29" FromRole="user" ToRole="chat" />
+        </EntityType>
+        <Association Name="FK__add_frien__af_go__47DBAE45">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="add_friend" Type="Self.add_friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="add_friend">
+              <PropertyRef Name="af_go" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__add_frien__af_ta__48CFD27E">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="add_friend" Type="Self.add_friend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="add_friend">
+              <PropertyRef Name="af_take" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__alim__af_no__49C3F6B7">
+          <End Role="add_friend" Type="Self.add_friend" Multiplicity="0..1" />
+          <End Role="alim" Type="Self.alim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="add_friend">
+              <PropertyRef Name="af_no" />
+            </Principal>
+            <Dependent Role="alim">
+              <PropertyRef Name="af_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__c_go__4AB81AF0">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="c_go" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__c_take__4BAC3F29">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="c_take" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__cg_no__4CA06362">
+          <End Role="chat_group" Type="Self.chat_group" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chat_group">
+              <PropertyRef Name="cg_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="cg_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__e_no__4D94879B">
+          <End Role="emoticon" Type="Self.emoticon" Multiplicity="0..1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emoticon">
+              <PropertyRef Name="e_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="e_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__f_no__4E88ABD4">
+          <End Role="file" Type="Self.file" Multiplicity="0..1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="file">
+              <PropertyRef Name="f_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="f_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__emoticon__eg_no__4F7CD00D">
+          <End Role="emoticon_group" Type="Self.emoticon_group" Multiplicity="0..1" />
+          <End Role="emoticon" Type="Self.emoticon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="emoticon_group">
+              <PropertyRef Name="eg_no" />
+            </Principal>
+            <Dependent Role="emoticon">
+              <PropertyRef Name="eg_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="telltokEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="add_friend" EntityType="Self.add_friend" />
+          <EntitySet Name="ads" EntityType="Self.ads" />
+          <EntitySet Name="alim" EntityType="Self.alim" />
+          <EntitySet Name="chat" EntityType="Self.chat" />
+          <EntitySet Name="chat_group" EntityType="Self.chat_group" />
+          <EntitySet Name="emoticon" EntityType="Self.emoticon" />
+          <EntitySet Name="emoticon_group" EntityType="Self.emoticon_group" />
+          <EntitySet Name="file" EntityType="Self.file" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="FK__add_frien__af_go__47DBAE45" Association="Self.FK__add_frien__af_go__47DBAE45">
+            <End Role="user" EntitySet="user" />
+            <End Role="add_friend" EntitySet="add_friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK__add_frien__af_ta__48CFD27E" Association="Self.FK__add_frien__af_ta__48CFD27E">
+            <End Role="user" EntitySet="user" />
+            <End Role="add_friend" EntitySet="add_friend" />
+          </AssociationSet>
+          <AssociationSet Name="FK__alim__af_no__49C3F6B7" Association="Self.FK__alim__af_no__49C3F6B7">
+            <End Role="add_friend" EntitySet="add_friend" />
+            <End Role="alim" EntitySet="alim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__c_go__4AB81AF0" Association="Self.FK__chat__c_go__4AB81AF0">
+            <End Role="user" EntitySet="user" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__c_take__4BAC3F29" Association="Self.FK__chat__c_take__4BAC3F29">
+            <End Role="user" EntitySet="user" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__cg_no__4CA06362" Association="Self.FK__chat__cg_no__4CA06362">
+            <End Role="chat_group" EntitySet="chat_group" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__e_no__4D94879B" Association="Self.FK__chat__e_no__4D94879B">
+            <End Role="emoticon" EntitySet="emoticon" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__f_no__4E88ABD4" Association="Self.FK__chat__f_no__4E88ABD4">
+            <End Role="file" EntitySet="file" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__emoticon__eg_no__4F7CD00D" Association="Self.FK__emoticon__eg_no__4F7CD00D">
+            <End Role="emoticon_group" EntitySet="emoticon_group" />
+            <End Role="emoticon" EntitySet="emoticon" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="telltokModelStoreContainer" CdmEntityContainer="telltokEntities">
+          <EntitySetMapping Name="add_friend">
+            <EntityTypeMapping TypeName="telltokModel.add_friend">
+              <MappingFragment StoreEntitySet="add_friend">
+                <ScalarProperty Name="af_no" ColumnName="af_no" />
+                <ScalarProperty Name="af_go" ColumnName="af_go" />
+                <ScalarProperty Name="af_take" ColumnName="af_take" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ads">
+            <EntityTypeMapping TypeName="telltokModel.ads">
+              <MappingFragment StoreEntitySet="ads">
+                <ScalarProperty Name="ad_no" ColumnName="ad_no" />
+                <ScalarProperty Name="ad_image" ColumnName="ad_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alim">
+            <EntityTypeMapping TypeName="telltokModel.alim">
+              <MappingFragment StoreEntitySet="alim">
+                <ScalarProperty Name="a_no" ColumnName="a_no" />
+                <ScalarProperty Name="a_date" ColumnName="a_date" />
+                <ScalarProperty Name="af_no" ColumnName="af_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chat">
+            <EntityTypeMapping TypeName="telltokModel.chat">
+              <MappingFragment StoreEntitySet="chat">
+                <ScalarProperty Name="c_no" ColumnName="c_no" />
+                <ScalarProperty Name="c_date" ColumnName="c_date" />
+                <ScalarProperty Name="c_go" ColumnName="c_go" />
+                <ScalarProperty Name="c_take" ColumnName="c_take" />
+                <ScalarProperty Name="c_message" ColumnName="c_message" />
+                <ScalarProperty Name="e_no" ColumnName="e_no" />
+                <ScalarProperty Name="f_no" ColumnName="f_no" />
+                <ScalarProperty Name="c_delete" ColumnName="c_delete" />
+                <ScalarProperty Name="cg_no" ColumnName="cg_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chat_group">
+            <EntityTypeMapping TypeName="telltokModel.chat_group">
+              <MappingFragment StoreEntitySet="chat_group">
+                <ScalarProperty Name="cg_no" ColumnName="cg_no" />
+                <ScalarProperty Name="cg_tamp" ColumnName="cg_tamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emoticon">
+            <EntityTypeMapping TypeName="telltokModel.emoticon">
+              <MappingFragment StoreEntitySet="emoticon">
+                <ScalarProperty Name="e_no" ColumnName="e_no" />
+                <ScalarProperty Name="e_image" ColumnName="e_image" />
+                <ScalarProperty Name="eg_no" ColumnName="eg_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="emoticon_group">
+            <EntityTypeMapping TypeName="telltokModel.emoticon_group">
+              <MappingFragment StoreEntitySet="emoticon_group">
+                <ScalarProperty Name="eg_no" ColumnName="eg_no" />
+                <ScalarProperty Name="eg_name" ColumnName="eg_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="file">
+            <EntityTypeMapping TypeName="telltokModel.file">
+              <MappingFragment StoreEntitySet="file">
+                <ScalarProperty Name="f_no" ColumnName="f_no" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="telltokModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="u_no" ColumnName="u_no" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="u_pw" ColumnName="u_pw" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_status_text" ColumnName="u_status_text" />
+                <ScalarProperty Name="u_like_count" ColumnName="u_like_count" />
+                <ScalarProperty Name="u_friend_id" ColumnName="u_friend_id" />
+                <ScalarProperty Name="u_birthdate" ColumnName="u_birthdate" />
+                <ScalarProperty Name="u_gender" ColumnName="u_gender" />
+                <ScalarProperty Name="u_friend_fix" ColumnName="u_friend_fix" />
+                <ScalarProperty Name="u_friend" ColumnName="u_friend" />
+                <ScalarProperty Name="u_tellpay" ColumnName="u_tellpay" />
+                <ScalarProperty Name="u_emoticon" ColumnName="u_emoticon" />
+                <ScalarProperty Name="u_profile_image" ColumnName="u_profile_image" />
+                <ScalarProperty Name="u_background_image" ColumnName="u_background_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

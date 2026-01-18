@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FCDEE8EC-EC61-4F39-8220-2684D3FB5920}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>telltok</RootNamespace>
+    <AssemblyName>telltok</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>telltok.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon_text_.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="add_friend.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ads.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="alim.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="chat.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="chat_group.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="emoticon.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="emoticon_group.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="file.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="play\AddFriend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\AddFriend.Designer.cs">
+      <DependentUpon>AddFriend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\Chat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\Chat.Designer.cs">
+      <DependentUpon>Chat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\Alim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\Alim.Designer.cs">
+      <DependentUpon>Alim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\AlimControls\FriendControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\AlimControls\FriendControl.Designer.cs">
+      <DependentUpon>FriendControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatTake.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatTake.Designer.cs">
+      <DependentUpon>ChatTake.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatGo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatGo.Designer.cs">
+      <DependentUpon>ChatGo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\Dateline.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\Dateline.Designer.cs">
+      <DependentUpon>Dateline.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatFIle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatFIle.Designer.cs">
+      <DependentUpon>ChatFIle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatEdit.Designer.cs">
+      <DependentUpon>ChatEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\EmoticonSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\EmoticonSelect.Designer.cs">
+      <DependentUpon>EmoticonSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\TellViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\TellViewer.Designer.cs">
+      <DependentUpon>TellViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\SrttingControls\Account.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\SrttingControls\Account.Designer.cs">
+      <DependentUpon>Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\SrttingControls\LockModSetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\SrttingControls\LockModSetPassword.Designer.cs">
+      <DependentUpon>LockModSetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\SrttingControls\Security.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\SrttingControls\Security.Designer.cs">
+      <DependentUpon>Security.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\SrttingControls\ChatOption.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\SrttingControls\ChatOption.Designer.cs">
+      <DependentUpon>ChatOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\And.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\And.Designer.cs">
+      <DependentUpon>And.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\UserProfileControls\EditProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\UserProfileControls\EditProfile.Designer.cs">
+      <DependentUpon>EditProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\Setting.Designer.cs">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatControls\ChatList.Designer.cs">
+      <DependentUpon>ChatList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\FriendControls\AddFriendControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\FriendControls\AddFriendControl.Designer.cs">
+      <DependentUpon>AddFriendControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\ChatTap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\ChatTap.Designer.cs">
+      <DependentUpon>ChatTap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\UserProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\UserProfile.Designer.cs">
+      <DependentUpon>UserProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\Friend.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\Friend.Designer.cs">
+      <DependentUpon>Friend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainControls\FriendControls\User.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="play\MainControls\FriendControls\User.Designer.cs">
+      <DependentUpon>User.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="play\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="play\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Forms\DevTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\DevButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\DevForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\Forms\DevForm.Designer.cs">
+      <DependentUpon>DevForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\Tool.cs" />
+    <Compile Include="Tools\UserControls\ProfilePicture.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tools\UserControls\ProfilePicture.Designer.cs">
+      <DependentUpon>ProfilePicture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\UserControls\contour.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tools\UserControls\contour.Designer.cs">
+      <DependentUpon>contour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="user.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="play\AddFriend.resx">
+      <DependentUpon>AddFriend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\Alim.resx">
+      <DependentUpon>Alim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\Chat.resx">
+      <DependentUpon>Chat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\AlimControls\FriendControl.resx">
+      <DependentUpon>FriendControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\And.resx">
+      <DependentUpon>And.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatControls\ChatFIle.resx">
+      <DependentUpon>ChatFIle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatControls\ChatGo.resx">
+      <DependentUpon>ChatGo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatControls\ChatTake.resx">
+      <DependentUpon>ChatTake.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatControls\Dateline.resx">
+      <DependentUpon>Dateline.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatControls\ChatEdit.resx">
+      <DependentUpon>ChatEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatControls\EmoticonSelect.resx">
+      <DependentUpon>EmoticonSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatControls\TellViewer.resx">
+      <DependentUpon>TellViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatTap.resx">
+      <DependentUpon>ChatTap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\ChatControls\ChatList.resx">
+      <DependentUpon>ChatList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\Friend.resx">
+      <DependentUpon>Friend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\FriendControls\AddFriendControl.resx">
+      <DependentUpon>AddFriendControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\FriendControls\User.resx">
+      <DependentUpon>User.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\SrttingControls\Account.resx">
+      <DependentUpon>Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\SrttingControls\ChatOption.resx">
+      <DependentUpon>ChatOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\SrttingControls\LockModSetPassword.resx">
+      <DependentUpon>LockModSetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\SrttingControls\Security.resx">
+      <DependentUpon>Security.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainControls\UserProfileControls\EditProfile.resx">
+      <DependentUpon>EditProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\Setting.resx">
+      <DependentUpon>Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="play\UserProfile.resx">
+      <DependentUpon>UserProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Tools\Forms\DevForm.resx">
+      <DependentUpon>DevForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\UserControls\contour.resx">
+      <DependentUpon>contour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tools\UserControls\ProfilePicture.resx">
+      <DependentUpon>ProfilePicture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="NoonnuBasicGothicRegular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="icon_text_.ico" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\chat-emoticon.png" />
+    <None Include="Resources\chat-button.png" />
+    <None Include="Resources\and-emoticon.png" />
+    <None Include="Resources\login-loding.gif" />
+    <None Include="Resources\chat-emoticon-button.png" />
+    <None Include="Resources\chat-emoticon-button_enter.png" />
+    <None Include="Resources\add-buyList.png" />
+    <None Include="Resources\Locker.png" />
+    <None Include="Resources\19.png" />
+    <None Include="Resources\saech.png" />
+    <None Include="Resources\pay.png" />
+    <None Include="Resources\and-stop_2.png" />
+    <None Include="Resources\and-logout_3.png" />
+    <None Include="Resources\and-logout_2.png" />
+    <None Include="Resources\and-stop_3.png" />
+    <None Include="Resources\gift.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\Profile-myInfo.png" />
+    <None Include="Resources\profile-chat.png" />
+    <None Include="Resources\main-alim.png" />
+    <None Include="Resources\main-alim_hover.png" />
+    <None Include="Resources\addFirend.png" />
+    <None Include="Resources\file-button.png" />
+    <None Include="Resources\file-button_enter.png" />
+    <None Include="Resources\main-settings_hover.png" />
+    <None Include="Resources\main-settings.png" />
+    <None Include="Resources\Profile_Like.png" />
+    <None Include="Resources\Profile_Like_Click.png" />
+    <None Include="Resources\Lock-mode-icon.ico" />
+    <None Include="Resources\AddFriend_2.png" />
+    <None Include="Resources\AddFriend_3.png" />
+    <None Include="Resources\main-chat_3.png" />
+    <None Include="Resources\main-chat_2.png" />
+    <None Include="Resources\main-chat_1.png" />
+    <None Include="Resources\main-and_3.png" />
+    <None Include="Resources\main-and_2.png" />
+    <None Include="Resources\main-and_1.png" />
+    <None Include="Resources\main-friend_3.png" />
+    <None Include="Resources\main-friend_2.png" />
+    <None Include="Resources\main-friend_1.png" />
+    <None Include="Resources\ezgif-3-45512efad7.gif" />
+    <None Include="Resources\기본_프사.jpg" />
+    <None Include="Resources\black_icon.ico" />
+    <None Include="Resources\%28black%29icon.ico" />
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\icon_text_.ico" />
+    <None Include="Resources\icon.ico" />
+    <None Include="Resources\Lock_mode_icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PublishAot>true</PublishAot>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>if not exist "$(TargetDir)DLLs" mkdir "$(TargetDir)DLLs"
+move "$(TargetDir)*.dll" "$(TargetDir)DLLs\"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
