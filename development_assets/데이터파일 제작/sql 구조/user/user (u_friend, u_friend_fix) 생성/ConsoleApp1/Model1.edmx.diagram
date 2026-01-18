@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b1b02e690284f7388d5f1879b2434c8" Name="Diagram1">
+        <EntityTypeShape EntityType="telltokModel.add_friend" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="telltokModel.alim" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="telltokModel.chat" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="telltokModel.file" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="telltokModel.gift" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="telltokModel.gift_type" Width="1.5" PointX="1.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="telltokModel.purchase" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="telltokModel.user" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="telltokModel.FK__add_frien__af_go__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__add_frien__af_ta__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__alim__af_no__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__alim__p_no__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__chat__c_go__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__chat__c_take__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__chat__f_no__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__gift__gt_no__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__purchase__g_no__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__purchase__p_go__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="telltokModel.FK__purchase__p_take__4CA06362" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

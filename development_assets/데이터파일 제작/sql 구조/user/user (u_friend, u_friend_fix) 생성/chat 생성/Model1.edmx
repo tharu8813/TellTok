@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="telltokModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alim">
+          <Key>
+            <PropertyRef Name="a_no" />
+          </Key>
+          <Property Name="a_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="a_type" Type="int" Nullable="false" />
+          <Property Name="a_date" Type="datetime" Nullable="false" />
+          <Property Name="a_add_friend" Type="int" />
+          <Property Name="a_add_gift" Type="int" />
+        </EntityType>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="c_no" />
+          </Key>
+          <Property Name="c_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="c_date" Type="datetime" />
+          <Property Name="c_go" Type="int" Nullable="false" />
+          <Property Name="c_take" Type="int" Nullable="false" />
+          <Property Name="c_message" Type="varchar" MaxLength="100" />
+          <Property Name="f_no" Type="int" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="f_no" />
+          </Key>
+          <Property Name="f_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gift">
+          <Key>
+            <PropertyRef Name="g_no" />
+          </Key>
+          <Property Name="g_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="g_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="g_explanation" Type="text" Nullable="false" />
+          <Property Name="g_like" Type="int" />
+          <Property Name="g_date" Type="datetime" />
+          <Property Name="g_price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="g_type" Type="tinyint" />
+          <Property Name="g_PG" Type="bit" />
+        </EntityType>
+        <EntityType Name="gift_received">
+          <Key>
+            <PropertyRef Name="gr_no" />
+          </Key>
+          <Property Name="gr_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="g_no" Type="int" Nullable="false" />
+          <Property Name="gr_go" Type="int" Nullable="false" />
+          <Property Name="gr_take" Type="int" Nullable="false" />
+          <Property Name="gr_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="u_no" />
+          </Key>
+          <Property Name="u_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="u_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="u_pw" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="u_name" Type="varchar" MaxLength="100" />
+          <Property Name="u_status_text" Type="varchar" MaxLength="255" />
+          <Property Name="u_like_count" Type="int" />
+          <Property Name="u_friend_id" Type="int" />
+          <Property Name="u_date" Type="datetime" />
+          <Property Name="u_gender" Type="int" />
+          <Property Name="u_friend_fix" Type="varchar" MaxLength="255" />
+          <Property Name="u_friend" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__alim__a_add_frie__5BE2A6F2">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="alim" Type="Self.alim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="alim">
+              <PropertyRef Name="a_add_friend" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__alim__a_add_gift__5CD6CB2B">
+          <End Role="gift" Type="Self.gift" Multiplicity="0..1" />
+          <End Role="alim" Type="Self.alim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gift">
+              <PropertyRef Name="g_no" />
+            </Principal>
+            <Dependent Role="alim">
+              <PropertyRef Name="a_add_gift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__c_go__4F7CD00D">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="c_go" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__c_take__5070F446">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="c_take" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__f_no__5165187F">
+          <End Role="file" Type="Self.file" Multiplicity="0..1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="file">
+              <PropertyRef Name="f_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="f_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gift_rece__gr_go__5812160E">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="gift_received" Type="Self.gift_received" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="gift_received">
+              <PropertyRef Name="gr_go" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gift_rece__gr_ta__59063A47">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="gift_received" Type="Self.gift_received" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="gift_received">
+              <PropertyRef Name="gr_take" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gift_recei__g_no__571DF1D5">
+          <End Role="gift" Type="Self.gift" Multiplicity="1" />
+          <End Role="gift_received" Type="Self.gift_received" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gift">
+              <PropertyRef Name="g_no" />
+            </Principal>
+            <Dependent Role="gift_received">
+              <PropertyRef Name="g_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="telltokModelStoreContainer">
+          <EntitySet Name="alim" EntityType="Self.alim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chat" EntityType="Self.chat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="file" EntityType="Self.file" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gift" EntityType="Self.gift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gift_received" EntityType="Self.gift_received" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__alim__a_add_frie__5BE2A6F2" Association="Self.FK__alim__a_add_frie__5BE2A6F2">
+            <End Role="user" EntitySet="user" />
+            <End Role="alim" EntitySet="alim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__alim__a_add_gift__5CD6CB2B" Association="Self.FK__alim__a_add_gift__5CD6CB2B">
+            <End Role="gift" EntitySet="gift" />
+            <End Role="alim" EntitySet="alim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__c_go__4F7CD00D" Association="Self.FK__chat__c_go__4F7CD00D">
+            <End Role="user" EntitySet="user" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__c_take__5070F446" Association="Self.FK__chat__c_take__5070F446">
+            <End Role="user" EntitySet="user" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__f_no__5165187F" Association="Self.FK__chat__f_no__5165187F">
+            <End Role="file" EntitySet="file" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gift_rece__gr_go__5812160E" Association="Self.FK__gift_rece__gr_go__5812160E">
+            <End Role="user" EntitySet="user" />
+            <End Role="gift_received" EntitySet="gift_received" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gift_rece__gr_ta__59063A47" Association="Self.FK__gift_rece__gr_ta__59063A47">
+            <End Role="user" EntitySet="user" />
+            <End Role="gift_received" EntitySet="gift_received" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gift_recei__g_no__571DF1D5" Association="Self.FK__gift_recei__g_no__571DF1D5">
+            <End Role="gift" EntitySet="gift" />
+            <End Role="gift_received" EntitySet="gift_received" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="telltokModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="alim">
+          <Key>
+            <PropertyRef Name="a_no" />
+          </Key>
+          <Property Name="a_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="a_type" Type="Int32" Nullable="false" />
+          <Property Name="a_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="a_add_friend" Type="Int32" />
+          <Property Name="a_add_gift" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.FK__alim__a_add_frie__5BE2A6F2" FromRole="alim" ToRole="user" />
+          <NavigationProperty Name="gift" Relationship="Self.FK__alim__a_add_gift__5CD6CB2B" FromRole="alim" ToRole="gift" />
+        </EntityType>
+        <EntityType Name="chat">
+          <Key>
+            <PropertyRef Name="c_no" />
+          </Key>
+          <Property Name="c_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="c_date" Type="DateTime" Precision="3" />
+          <Property Name="c_go" Type="Int32" Nullable="false" />
+          <Property Name="c_take" Type="Int32" Nullable="false" />
+          <Property Name="c_message" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="f_no" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.FK__chat__c_go__4F7CD00D" FromRole="chat" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__chat__c_take__5070F446" FromRole="chat" ToRole="user" />
+          <NavigationProperty Name="file" Relationship="Self.FK__chat__f_no__5165187F" FromRole="chat" ToRole="file" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="f_no" />
+          </Key>
+          <Property Name="f_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="chat" Relationship="Self.FK__chat__f_no__5165187F" FromRole="file" ToRole="chat" />
+        </EntityType>
+        <EntityType Name="gift">
+          <Key>
+            <PropertyRef Name="g_no" />
+          </Key>
+          <Property Name="g_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="g_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="g_explanation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="g_like" Type="Int32" />
+          <Property Name="g_date" Type="DateTime" Precision="3" />
+          <Property Name="g_price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="g_type" Type="Byte" />
+          <Property Name="g_PG" Type="Boolean" />
+          <NavigationProperty Name="alim" Relationship="Self.FK__alim__a_add_gift__5CD6CB2B" FromRole="gift" ToRole="alim" />
+          <NavigationProperty Name="gift_received" Relationship="Self.FK__gift_recei__g_no__571DF1D5" FromRole="gift" ToRole="gift_received" />
+        </EntityType>
+        <EntityType Name="gift_received">
+          <Key>
+            <PropertyRef Name="gr_no" />
+          </Key>
+          <Property Name="gr_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="g_no" Type="Int32" Nullable="false" />
+          <Property Name="gr_go" Type="Int32" Nullable="false" />
+          <Property Name="gr_take" Type="Int32" Nullable="false" />
+          <Property Name="gr_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="gift" Relationship="Self.FK__gift_recei__g_no__571DF1D5" FromRole="gift_received" ToRole="gift" />
+          <NavigationProperty Name="user" Relationship="Self.FK__gift_rece__gr_go__5812160E" FromRole="gift_received" ToRole="user" />
+          <NavigationProperty Name="user1" Relationship="Self.FK__gift_rece__gr_ta__59063A47" FromRole="gift_received" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="u_no" />
+          </Key>
+          <Property Name="u_no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="u_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_pw" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="u_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="u_status_text" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="u_like_count" Type="Int32" />
+          <Property Name="u_friend_id" Type="Int32" />
+          <Property Name="u_date" Type="DateTime" Precision="3" />
+          <Property Name="u_gender" Type="Int32" />
+          <Property Name="u_friend_fix" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="u_friend" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="alim" Relationship="Self.FK__alim__a_add_frie__5BE2A6F2" FromRole="user" ToRole="alim" />
+          <NavigationProperty Name="chat" Relationship="Self.FK__chat__c_go__4F7CD00D" FromRole="user" ToRole="chat" />
+          <NavigationProperty Name="chat1" Relationship="Self.FK__chat__c_take__5070F446" FromRole="user" ToRole="chat" />
+          <NavigationProperty Name="gift_received" Relationship="Self.FK__gift_rece__gr_go__5812160E" FromRole="user" ToRole="gift_received" />
+          <NavigationProperty Name="gift_received1" Relationship="Self.FK__gift_rece__gr_ta__59063A47" FromRole="user" ToRole="gift_received" />
+        </EntityType>
+        <Association Name="FK__alim__a_add_frie__5BE2A6F2">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="alim" Type="Self.alim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="alim">
+              <PropertyRef Name="a_add_friend" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__alim__a_add_gift__5CD6CB2B">
+          <End Role="gift" Type="Self.gift" Multiplicity="0..1" />
+          <End Role="alim" Type="Self.alim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gift">
+              <PropertyRef Name="g_no" />
+            </Principal>
+            <Dependent Role="alim">
+              <PropertyRef Name="a_add_gift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__c_go__4F7CD00D">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="c_go" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__c_take__5070F446">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="c_take" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__chat__f_no__5165187F">
+          <End Role="file" Type="Self.file" Multiplicity="0..1" />
+          <End Role="chat" Type="Self.chat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="file">
+              <PropertyRef Name="f_no" />
+            </Principal>
+            <Dependent Role="chat">
+              <PropertyRef Name="f_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gift_recei__g_no__571DF1D5">
+          <End Role="gift" Type="Self.gift" Multiplicity="1" />
+          <End Role="gift_received" Type="Self.gift_received" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gift">
+              <PropertyRef Name="g_no" />
+            </Principal>
+            <Dependent Role="gift_received">
+              <PropertyRef Name="g_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gift_rece__gr_go__5812160E">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="gift_received" Type="Self.gift_received" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="gift_received">
+              <PropertyRef Name="gr_go" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__gift_rece__gr_ta__59063A47">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="gift_received" Type="Self.gift_received" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="u_no" />
+            </Principal>
+            <Dependent Role="gift_received">
+              <PropertyRef Name="gr_take" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="telltokEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alim" EntityType="Self.alim" />
+          <EntitySet Name="chat" EntityType="Self.chat" />
+          <EntitySet Name="file" EntityType="Self.file" />
+          <EntitySet Name="gift" EntityType="Self.gift" />
+          <EntitySet Name="gift_received" EntityType="Self.gift_received" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <AssociationSet Name="FK__alim__a_add_frie__5BE2A6F2" Association="Self.FK__alim__a_add_frie__5BE2A6F2">
+            <End Role="user" EntitySet="user" />
+            <End Role="alim" EntitySet="alim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__alim__a_add_gift__5CD6CB2B" Association="Self.FK__alim__a_add_gift__5CD6CB2B">
+            <End Role="gift" EntitySet="gift" />
+            <End Role="alim" EntitySet="alim" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__c_go__4F7CD00D" Association="Self.FK__chat__c_go__4F7CD00D">
+            <End Role="user" EntitySet="user" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__c_take__5070F446" Association="Self.FK__chat__c_take__5070F446">
+            <End Role="user" EntitySet="user" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__chat__f_no__5165187F" Association="Self.FK__chat__f_no__5165187F">
+            <End Role="file" EntitySet="file" />
+            <End Role="chat" EntitySet="chat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gift_recei__g_no__571DF1D5" Association="Self.FK__gift_recei__g_no__571DF1D5">
+            <End Role="gift" EntitySet="gift" />
+            <End Role="gift_received" EntitySet="gift_received" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gift_rece__gr_go__5812160E" Association="Self.FK__gift_rece__gr_go__5812160E">
+            <End Role="user" EntitySet="user" />
+            <End Role="gift_received" EntitySet="gift_received" />
+          </AssociationSet>
+          <AssociationSet Name="FK__gift_rece__gr_ta__59063A47" Association="Self.FK__gift_rece__gr_ta__59063A47">
+            <End Role="user" EntitySet="user" />
+            <End Role="gift_received" EntitySet="gift_received" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="telltokModelStoreContainer" CdmEntityContainer="telltokEntities">
+          <EntitySetMapping Name="alim">
+            <EntityTypeMapping TypeName="telltokModel.alim">
+              <MappingFragment StoreEntitySet="alim">
+                <ScalarProperty Name="a_no" ColumnName="a_no" />
+                <ScalarProperty Name="a_type" ColumnName="a_type" />
+                <ScalarProperty Name="a_date" ColumnName="a_date" />
+                <ScalarProperty Name="a_add_friend" ColumnName="a_add_friend" />
+                <ScalarProperty Name="a_add_gift" ColumnName="a_add_gift" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chat">
+            <EntityTypeMapping TypeName="telltokModel.chat">
+              <MappingFragment StoreEntitySet="chat">
+                <ScalarProperty Name="c_no" ColumnName="c_no" />
+                <ScalarProperty Name="c_date" ColumnName="c_date" />
+                <ScalarProperty Name="c_go" ColumnName="c_go" />
+                <ScalarProperty Name="c_take" ColumnName="c_take" />
+                <ScalarProperty Name="c_message" ColumnName="c_message" />
+                <ScalarProperty Name="f_no" ColumnName="f_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="file">
+            <EntityTypeMapping TypeName="telltokModel.file">
+              <MappingFragment StoreEntitySet="file">
+                <ScalarProperty Name="f_no" ColumnName="f_no" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gift">
+            <EntityTypeMapping TypeName="telltokModel.gift">
+              <MappingFragment StoreEntitySet="gift">
+                <ScalarProperty Name="g_no" ColumnName="g_no" />
+                <ScalarProperty Name="g_name" ColumnName="g_name" />
+                <ScalarProperty Name="g_explanation" ColumnName="g_explanation" />
+                <ScalarProperty Name="g_like" ColumnName="g_like" />
+                <ScalarProperty Name="g_date" ColumnName="g_date" />
+                <ScalarProperty Name="g_price" ColumnName="g_price" />
+                <ScalarProperty Name="g_type" ColumnName="g_type" />
+                <ScalarProperty Name="g_PG" ColumnName="g_PG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gift_received">
+            <EntityTypeMapping TypeName="telltokModel.gift_received">
+              <MappingFragment StoreEntitySet="gift_received">
+                <ScalarProperty Name="gr_no" ColumnName="gr_no" />
+                <ScalarProperty Name="g_no" ColumnName="g_no" />
+                <ScalarProperty Name="gr_go" ColumnName="gr_go" />
+                <ScalarProperty Name="gr_take" ColumnName="gr_take" />
+                <ScalarProperty Name="gr_date" ColumnName="gr_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="telltokModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="u_no" ColumnName="u_no" />
+                <ScalarProperty Name="u_id" ColumnName="u_id" />
+                <ScalarProperty Name="u_pw" ColumnName="u_pw" />
+                <ScalarProperty Name="u_name" ColumnName="u_name" />
+                <ScalarProperty Name="u_status_text" ColumnName="u_status_text" />
+                <ScalarProperty Name="u_like_count" ColumnName="u_like_count" />
+                <ScalarProperty Name="u_friend_id" ColumnName="u_friend_id" />
+                <ScalarProperty Name="u_date" ColumnName="u_date" />
+                <ScalarProperty Name="u_gender" ColumnName="u_gender" />
+                <ScalarProperty Name="u_friend_fix" ColumnName="u_friend_fix" />
+                <ScalarProperty Name="u_friend" ColumnName="u_friend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
