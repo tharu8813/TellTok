@@ -38,10 +38,14 @@ C# WinForms 기반 메신저 애플리케이션입니다.
 
 ## 실행 화면
 
-> 깃허브 상단 `screenshots` 폴더에 이미지 추가 후 경로를 연결하세요.
-
-![메인 화면](./screenshots/main_screen.png)
-![채팅 화면](./screenshots/chat_screen.png)
+![1](./screenshots/1.png)
+![2](./screenshots/2.png)
+![3](./screenshots/3.png)
+![4](./screenshots/4.png)
+![5](./screenshots/5.png)
+![6](./screenshots/6.png)
+![7](./screenshots/7.png)
+![8](./screenshots/8.png)
 
 
 ## 참고 사항
