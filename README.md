@@ -1,3 +1,5 @@
+![icon_text](./icon_text_.ico)
+
 # TellTok
 
 > **2025년 전국기능경기대회 정보기술 직종 1과제(C#) 출전 작품**  
