@@ -7,6 +7,11 @@
 > 강원도 대표로 출전하여 제작한 Windows 기반 메신저 프로그램입니다.
 > 카카오톡의 UI/UX에서 영감을 받아, 제한된 대회 환경 내에서 사용자 편의성과 UI 완성도를 극대화하는 데 초점을 두었습니다.
 
+[모두 풀이한 빌드는 여기를 클릭해서 확인하세요](https://github.com/tharu8813/TellTok/releases/tag/Correct)
+
+### 아래는 이전 빌드입니다.
+[Old-v1](https://github.com/tharu8813/TellTok/releases/tag/Old-v1)
+[Old-v2](https://github.com/tharu8813/TellTok/releases/tag/Old-v2)
 
 ## 프로젝트 소개
 
