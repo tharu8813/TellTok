@@ -2,6 +2,8 @@
 
 # TellTok
 
+[![.NET Framework](https://img.shields.io/badge/.NET%20Framework-4.7.2%20WinForms-512BD4)](https://dotnet.microsoft.com/download/dotnet-framework)
+
 > **2025년 전국기능경기대회 정보기술 직종 1과제(C#) 출전 작품**
 > 
 > 강원도 대표로 출전하여 제작한 Windows 기반 메신저 프로그램입니다.
